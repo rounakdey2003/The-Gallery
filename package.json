@@ -1,0 +1,27 @@
+{
+  "name": "The Gallery",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "build:analyze": "tsc && vite build --mode analyze",
+    "preview": "vite preview",
+    "preview:build": "npm run build && npm run preview"
+  },
+  "devDependencies": {
+    "@types/three": "^0.175.0",
+    "terser": "^5.43.1",
+    "typescript": "~5.7.2",
+    "vite": "^6.2.0",
+    "vite-plugin-glsl": "^1.4.0"
+  },
+  "dependencies": {
+    "gsap": "^3.13.0",
+    "lenis": "^1.2.3",
+    "motion": "^12.6.5",
+    "three": "^0.175.0",
+    "troika-three-text": "^0.52.4"
+  }
+}

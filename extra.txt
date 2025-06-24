@@ -1,0 +1,4 @@
+<section class="section__footer">
+            <a href="" data-animation="webgl-text" class="text__3 explore-link">Canvas</a>
+</section>
+

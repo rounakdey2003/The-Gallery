@@ -1,0 +1,317 @@
+:root {
+  --clr-text: #66FFFF;
+  --clr-selection: rgba(255, 156, 245, 0.3);
+  --clr-background: #090040;
+}
+
+* {
+  cursor: none;
+}
+
+.liquid-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 40px;
+  height: 40px;
+  background: radial-gradient(circle, 
+    rgba(102, 255, 255, 0.8) 0%, 
+    rgba(102, 255, 255, 0.4) 40%, 
+    rgba(102, 255, 255, 0.1) 70%,
+    transparent 100%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: screen;
+  transform: translate(-50%, -50%);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(3px);
+  border: 1px solid rgba(102, 255, 255, 0.3);
+  box-shadow: 
+    0 0 20px rgba(102, 255, 255, 0.4),
+    inset 0 0 20px rgba(102, 255, 255, 0.1),
+    0 0 40px rgba(102, 255, 255, 0.2);
+}
+
+.liquid-cursor::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 60%;
+  height: 60%;
+  background: radial-gradient(circle, 
+    rgba(255, 255, 255, 0.4) 0%, 
+    rgba(102, 255, 255, 0.2) 50%,
+    transparent 70%);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  animation: liquidPulse 2s ease-in-out infinite;
+}
+
+.liquid-cursor::after {
+  content: '';
+  position: absolute;
+  top: 20%;
+  left: 30%;
+  width: 25%;
+  height: 25%;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 50%;
+  filter: blur(1px);
+  animation: liquidShimmer 3s ease-in-out infinite;
+}
+
+.liquid-cursor.hovering {
+  width: 60px;
+  height: 60px;
+  background: radial-gradient(circle, 
+    rgba(102, 255, 255, 0.9) 0%, 
+    rgba(102, 255, 255, 0.6) 30%, 
+    rgba(102, 255, 255, 0.2) 60%,
+    transparent 100%);
+  box-shadow: 
+    0 0 30px rgba(102, 255, 255, 0.6),
+    inset 0 0 30px rgba(102, 255, 255, 0.2),
+    0 0 60px rgba(102, 255, 255, 0.3);
+  backdrop-filter: blur(4px);
+}
+
+.liquid-cursor.clicking {
+  width: 30px;
+  height: 30px;
+  background: radial-gradient(circle, 
+    rgba(102, 255, 255, 1) 0%, 
+    rgba(102, 255, 255, 0.8) 50%, 
+    transparent 100%);
+  box-shadow: 
+    0 0 40px rgba(102, 255, 255, 0.8),
+    inset 0 0 20px rgba(102, 255, 255, 0.3),
+    0 0 80px rgba(102, 255, 255, 0.4);
+  backdrop-filter: blur(2px);
+}
+
+@keyframes liquidPulse {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.4;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.3);
+    opacity: 0.7;
+  }
+}
+
+@keyframes liquidShimmer {
+  0%, 100% {
+    opacity: 0.7;
+    transform: translate(20%, 10%) scale(1);
+  }
+  33% {
+    opacity: 0.9;
+    transform: translate(40%, 20%) scale(1.1);
+  }
+  66% {
+    opacity: 0.5;
+    transform: translate(10%, 30%) scale(0.9);
+  }
+}
+
+@font-face {
+  font-family: "Humane";
+  src: url("/fonts/Humane-Black.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Humane";
+  src: url("/fonts/Humane-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Humane";
+  src: url("/fonts/Humane-ExtraBold.ttf") format("truetype");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Humane";
+  src: url("/fonts/Humane-ExtraLight.ttf") format("truetype");
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Humane";
+  src: url("/fonts/Humane-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Humane";
+  src: url("/fonts/Humane-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Humane";
+  src: url("/fonts/Humane-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Humane";
+  src: url("/fonts/Humane-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Humane";
+  src: url("/fonts/Humane-Thin.ttf") format("truetype");
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+body {
+  background: var(--clr-background);
+}
+
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+}
+
+::selection {
+  background-color: var(--clr-selection);
+  color: var(--clr-text);
+}
+
+::-moz-selection {
+  background-color: var(--clr-selection);
+  color: var(--clr-text);
+}
+
+.text__1,
+.text__2,
+.text__3 {
+  color: var(--clr-text);
+  text-align: center;
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+
+.content {
+  width: 100%;
+  font-family: Humane;
+  font-size: 0.825vw;
+
+  @media (max-width: 768px) {
+    font-size: 2vw;
+  }
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 70em;
+  gap: 17.6em;
+  padding: 6em 0;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+}
+
+.container section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: auto;
+}
+
+.section__main__content {
+  gap: 5.6em;
+}
+
+.text__1 {
+  transform: scale(1.05);
+  text-shadow: 
+    0 0 10px var(--clr-text);
+  filter: brightness(1);
+  font-size: 19.4em;
+  font-weight: 700;
+  max-width: 45em;
+
+  @media (max-width: 768px) {
+    font-size: 13.979em;
+  }
+}
+
+.text__2 {
+  font-size: 4.9em;
+  max-width: 7.6em;
+  letter-spacing: 0.01em;
+}
+
+.text__3 {
+  font-size: 13.979em;
+  max-width: 2.4em;
+}
+
+.explore-link {
+  text-decoration: none;
+  color: inherit;
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+.explore-link:hover {
+  transform: scale(1.05);
+  text-shadow: 
+    0 0 0px var(--clr-text);
+  filter: brightness(1);
+}
+
+.explore-link:active {
+  transform: scale(0.98);
+}
+
+.explore-link::before {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: var(--clr-text);
+  transform: translateX(-50%);
+  transition: width 0.3s ease;
+  box-shadow: 0 0 10px var(--clr-text);
+}
+
+.explore-link:hover::before {
+  width: 100%;
+}
